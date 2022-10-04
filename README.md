@@ -3,12 +3,32 @@ This is PyTorch based RoBERTa pre-trained model trained on tweeteval dataset whi
 
 In this Interactive demo, the user can input text and submit to get the corresponding sentiment class probabilities. This web app is developed using Gradio Python library.
 
-<h1> Running the Demo </h1>
+# Steps to run the demo on the cloud instace
 
-- Pull the docker image: $docker pull ghcr.io/amperecomputingai/sentiment-analysis-pt-aio-demo:hackathon-1.0.
-- Once you have the docker image(sentiment-analysis-pt-aio-demo:hackathon-1.0), start the docker by running:
-    $ ./start-docker-cloud-hackathon.sh
-- Then you will be in container and need to start the webapp by doing:
-    $ ./start-webapp.sh
-  This will get the webapp URL like this: Webapp URL: http://<ipaddr>:7860 then open any browser, copy and paste this URL to view the webapp.
-  
+### SSH to cloud instance
+> $ ssh -i \<ssh.key> ubuntu@\<public-ip>
+
+### Launch the container
+> $ wget https://raw.githubusercontent.com/AmpereComputingAI/ai-hackathon-2022/master/nlp/sentiment-analysis/start-docker-cloud-hackathon.sh
+
+> $ bash start-docker-cloud-hackathon.sh  
+Starting sentiment-analysis-pt-aio-demo container  
+Docker container ID:173e054cd5a9  
+
+### Start the demo
+> \# ./start-webapp.sh  
+>
+> Getting Webapp URL ...........................  
+Webapp URL: http://\<public-ip>:7860/
+
+
+### Open ports on the server
+> Install *firewalld* package
+\$ sudo apt purge ufw -y  
+\$ sudo apt install firewalld -y  
+\$ sudo firewall-cmd --permanent --zone=public --add-port=\<7860-7864>/tcp  
+\$ sudo firewall-cmd --reload  
+\$ sudo firewall-cmd --zone=public --list-ports
+
+### View on the Browser
+> Copy the URL and paste on the browser
