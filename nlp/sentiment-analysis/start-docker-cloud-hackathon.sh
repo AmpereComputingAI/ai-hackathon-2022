@@ -4,10 +4,11 @@
 IS_CLOUD="1"
 SERVER_IP="0.0.0.0"
 GRADIO_SERVER_PORT="7860"
-tag="hackathon"
 
-cont_name="sentiment-analysis-aio-demo-cloud"
-echo "Starting Sentiment Analysis demo container"
+repo="ghcr.io/amperecomputingai"
+cont_name="sentiment-analysis-pt-aio-demo"
+tag="hackathon-2022"
+echo "Starting $cont_name container"
 
 docker run \
   -it --init --rm -d \
@@ -20,7 +21,7 @@ docker run \
   --ipc host \
   --name $cont_name \
   --entrypoint /bin/bash \
-  sentiment-analysis-pt-aio-demo:$tag >& /dev/null
+  "$repo/$cont_name":$tag >& /dev/null
 
 cont_id=`docker ps | grep $cont_name | awk '{print $1}'`
 echo "Docker container ID:$cont_id"
