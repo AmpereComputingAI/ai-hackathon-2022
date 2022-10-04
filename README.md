@@ -3,7 +3,7 @@ This is PyTorch based RoBERTa pre-trained model trained on tweeteval dataset whi
 
 In this Interactive demo, the user can input text and submit to get the corresponding sentiment class probabilities. This web app is developed using Gradio Python library.
 
-# Steps to run the demo on the cloud instace
+# Steps to run the demo on the cloud instance
 
 ### SSH to cloud instance
 > $ ssh -i \<ssh.key> ubuntu@\<public-ip>
